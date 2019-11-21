@@ -1,0 +1,13 @@
+{
+	"name": "basemaps",
+	"endpoints": [
+		{
+			"path": "/v1/basemaps/landsat/:year/:z/:x/:y",
+			"method": "GET",
+			"redirect": {
+				"method": "GET",
+				"path": "/api/v2/basemaps/landsat/:year/:z/:x/:y"
+			}
+		}
+	]
+}

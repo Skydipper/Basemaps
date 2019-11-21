@@ -1,0 +1,7 @@
+base:
+  build: .
+  ports:
+    - "4502:4502"
+  environment:
+    PORT: 4502
+  container_name: gfw-analysis

@@ -1,0 +1,68 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "GFW Earth Engine Services API",
+        "description": "## Forma250 API\nIdentifies number of Forma250 alerts, and also area (ha) of clearing from alerts.\n\n## Global Forest Watch - UMD Forest API\n\nIdentifies areas of tree cover loss\n\n| Property | Value |\n| --- | --- | --- |\n| Coverage | Global land area (excluding Antarctica and other Arctic islands) |\n| Resolution | 30 x 30 meters |\n| Source | Hansen/UMD/Google/USGS/NASA |\n| Timescale | 2000–2014 |\n| Units | Percents and hectares |\n| Updates | Annual |\n",
+        "version": "1.0.0"
+    },
+    "host": "production-api.globalforestwatch.org.com",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "produces": [
+        "application/vnd.api+json"
+    ],
+    "paths": {
+        "/v1/landsat": {
+            "get": {
+                "description": "Basemap Service",
+                "tags": [
+                    "landsat"
+                ],
+                "parameters": [
+                    {
+                        "name": "geostore",
+                        "in": "query",
+                        "description": "Hash of the geostore",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Period of time (default '2001-01-01, 2017-02-01')",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Results obtained",
+                        "schema": {
+                            "$ref": "#/definitions/USEFORMA250"
+                        }
+                    },
+                    "404": {
+                        "description": "Geostore not found",
+                        "schema": {
+                            "$ref": "#/definitions/Errors"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Errors"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Errors"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
