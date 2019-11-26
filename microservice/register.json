@@ -6,7 +6,7 @@
 			"method": "GET",
 			"redirect": {
 				"method": "GET",
-				"path": "/api/v2/basemaps/landsat/:year/:z/:x/:y"
+				"path": "/api/v1/basemaps/landsat/:year/:z/:x/:y"
 			}
 		}
 	]
