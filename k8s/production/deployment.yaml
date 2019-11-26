@@ -18,15 +18,6 @@ spec:
         operator: "Equal"
         value: "basemaps"
         effect: "NoSchedule"
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: type
-                operator: In
-                values:
-                - basemaps
       containers:
       - name: {name}
         image: vizzuality/{name}
