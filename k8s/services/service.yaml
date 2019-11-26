@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: basemaps
+  namespace: default
   labels:
     name: {name}
   name: {name}

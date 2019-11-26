@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: basemaps
+  namespace: default
   labels:
     name: {name}
   name: {name}
