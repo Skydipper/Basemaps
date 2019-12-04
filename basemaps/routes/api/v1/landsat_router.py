@@ -4,7 +4,7 @@ from flask import Blueprint, redirect
 from basemaps.errors import LandsatTilesError
 from basemaps.middleware import exist_mapid, exist_tile
 from basemaps.routes.api import error
-from basemaps.services.analysis.landsat_tiles_v1 import LandsatTiles
+from basemaps.services.landsat_tiles_v1 import LandsatTiles
 from basemaps.validators import validate_landsat_year
 
 

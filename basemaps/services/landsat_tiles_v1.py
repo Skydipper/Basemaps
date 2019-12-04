@@ -4,29 +4,7 @@ import logging
 import redis
 from basemaps.config import SETTINGS
 from basemaps.errors import LandsatTilesError
-
-
-r = redis.StrictRedis.from_url(url=SETTINGS.get('redis').get('url'))
-
-class RedisService(object):
-
-    @staticmethod
-    def check_year_mapid(year):
-        text = r.get(year)
-        if text is not None:
-            return json.loads(text)
-        return None
-
-    @staticmethod
-    def get(year):
-        text = r.get(year)
-        if text is not None:
-            return text
-        return None
-
-    @staticmethod
-    def set_year_mapid(year, mapid, token):
-        return r.set(year, json.dumps({'mapid': mapid, 'token': token}), ex=2 * 24 * 60 * 60)
+from basemaps.services.redis_service import RedisService
 
 
 class LandsatTiles(object):
@@ -37,11 +15,10 @@ class LandsatTiles(object):
 
     @staticmethod
     def tile_url_gcs(year, z, x, y):
-        """Create a target url for tiles in the Google
-           Cloud Store.
+        """Create a url for tiles held in the Skydipper bucket in Google Cloud Store.
         """
         base_url = 'https://storage.googleapis.com'
-        url = f'{base_url}/landsat-cache/{year}/{z}/{x}/{y}.png'
+        url = f'{base_url}/skydipper-landsat-cache/{year}/{z}/{x}/{y}.png'
         return url
 
     @staticmethod
