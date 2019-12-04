@@ -6,7 +6,7 @@ from flask import Flask
 from oauth2client.service_account import ServiceAccountCredentials
 from basemaps.config import SETTINGS
 from basemaps.routes.api import error
-from basemaps.routes.api.v1 import landsat_tiles_endpoints_v1
+from basemaps.routes.api.v1 import landsat_tiles_endpoints_v1, layer_endpoints
 from basemaps.utils.files import load_config_json
 
 logging.basicConfig(
@@ -32,6 +32,7 @@ app = Flask(__name__)
 
 # Routing
 app.register_blueprint(landsat_tiles_endpoints_v1, url_prefix='/api/v1/basemaps/landsat')
+app.register_blueprint(layer_endpoints, url_prefix="/api/v1/basemaps/layer")
 
 # CT
 info = load_config_json('register')
