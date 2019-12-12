@@ -8,6 +8,14 @@
 				"method": "GET",
 				"path": "/api/v1/basemaps/landsat/:year/:z/:x/:y"
 			}
+		},
+		{
+			"path": "/v1/basemaps/layer/:layer/:z/:x/:y",
+			"method": "GET",
+			"redirect": {
+				"method": "GET",
+				"path": "/api/v1/basemaps/layer/:layer/:z/:x/:y"
+			}
 		}
 	]
 }

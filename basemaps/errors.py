@@ -15,3 +15,6 @@ class Error(Exception):
 
 class LandsatTilesError(Error):
     pass
+
+class LayerNotFound(Error):
+    pass
